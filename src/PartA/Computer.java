@@ -2,7 +2,8 @@ package PartA;
 
 public class Computer {
 
-	private static int numofcompu = 0;
+	private static int numOfComp = 0;
+	private static long serialnumCounter = 1000000;
 
 	private String brand;
 	private String model;
@@ -12,7 +13,9 @@ public class Computer {
 	public Computer(String brand, String model, long serialnum, double price) {
 		this.brand = brand;
 		this.model = model;
-		this.serialnum = serialnum;
+		this.serialnum = serialnumCounter;
+		this.serialnumCounter++;
+		numOfComp++;
 		this.price = price;
 	}
 
@@ -48,11 +51,20 @@ public class Computer {
 		this.price = price;
 	}
 
+	public int findNumberOfCreatedComputers() {
+		return numOfComp;
+	}
 	@Override
 	public String toString() {
 		return "Computer [brand=" + brand + ", model=" + model + ", serialnum=" + serialnum + ", price=" + price + "]";
 	}
 
-	
+	public boolean equals(Computer c) {
+		if (brand == c.brand && model == c.model && price == c.price) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 }
